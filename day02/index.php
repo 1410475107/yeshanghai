@@ -1,66 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>PHP学习</title>
-</head>
-<body>
-    <?php
-    phpinfo();
-    $arr = array(1, 2, 3, 4);
-    // 循环数组
-    foreach ($arr as $key => $value) {
-        echo $key . ':' . $value;
-        // echo "$key:$value";
-        echo '<hr>';
-    }
+<?php
+// 接收get过来的数据
+var_dump($_POST);
 
-    echo $arr[2];
-    //如何打印整个数组
-    var_dump($arr);
+//第一步：创建数据库连接
+$mysql = new mysqli('localhost', 'root', 'root', 'shanghai1807', 3306);
 
-    //多维数组
-    $student = [
-        ['name' => '张晨松', 'gender' => 1, 'scores' => ['english' => ['g1' => 89, 'g2' => 90], 'math' => 90]],
-        ['name' => '吴正鹏', 'gender' => 1],
-        ['name' => '沈斌', 'gender' => 1],
-        ['gender' => 2, 'name' => '凌敏'],
-        ['gender' => 0, 'name' => '胡文文'],
-        ['gender' => 3, 'name' => '匿名']
-    ];
-    //数组转JSON
-    echo json_encode($student);
+//第二步：设置编码  UTF 和 8之间没有 -
+$mysql->query('SET NAMES UTF8');
 
-    echo '<hr>';
-    echo $student[3]['name'];
-    echo '<hr>';
-    echo $student[1]['name'];
+//第三步：执行SQL语句
+foreach ($_POST as $n => $v) $$n = $v;
+$sql = 'INSERT INTO students(sname, tel, gender) VALUES ("'.$sname.'", "'.$tel.'", '.$gender.')';
+// $data = $_POST;
+// $sql = 'INSERT INTO students(sname, tel, gender) VALUES ("'.$data["sname"].'", "'.$data['tel'].'", '.$data['gender'].')';
+$r = $mysql->query($sql);
+var_dump($r);
 
-    //获取数组的元素个数
-    echo count($student);
-    ?>
-    <hr>
-    共有<?=count($student);?>个学生
-<table border="1">
-    <tr>
-        <td>顺序</td>
-        <td>姓名</td>
-        <td>性别</td>
-    </tr>
-    <?php
-    // ($v['gender'] == 1? '男':($v['gender'] == 2? '女':'保密'))
-    $gender = [0 => '保密', 1 => '男', 2 => '女', 3 => '不确定'];
-    foreach ($student as $k => $v) {
-        echo '<tr>
-                <td>' . ($k + 1) . '</td>
-                <td>' . $v['name'] . '</td>
-                <td>' . $gender[$v['gender']] . '</td>
-            </tr>';
-    }
-    ?>
-    
-</table>
-</body>
-</html>
+//第四步：关闭数据库连接
+$mysql->close();
