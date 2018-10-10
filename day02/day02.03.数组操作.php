@@ -37,7 +37,7 @@
     echo count($student);
     ?>
     <hr>
-    共有<?php echo count($student);?>个学生
+    共有<?php echo count($student); ?>个学生
 <table border="1">
     <tr>
         <td>顺序</td>
@@ -54,6 +54,8 @@
                 <td>' . $gender[$v['gender']] . '</td>
             </tr>';
     }
+
+    
     ?>
     
 </table>

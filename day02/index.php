@@ -8,6 +8,7 @@
 </head>
 <body>
     <?php
+    phpinfo();
     $arr = array(1, 2, 3, 4);
     // 循环数组
     foreach ($arr as $key => $value) {
@@ -29,6 +30,9 @@
         ['gender' => 0, 'name' => '胡文文'],
         ['gender' => 3, 'name' => '匿名']
     ];
+    //数组转JSON
+    echo json_encode($student);
+
     echo '<hr>';
     echo $student[3]['name'];
     echo '<hr>';
@@ -38,7 +42,7 @@
     echo count($student);
     ?>
     <hr>
-    共有<?php echo count($student);?>个学生
+    共有<?=count($student);?>个学生
 <table border="1">
     <tr>
         <td>顺序</td>
