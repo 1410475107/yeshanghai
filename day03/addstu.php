@@ -1,3 +1,9 @@
+<?php
+    require('./common/mysql.php');
+    $sql = 'SELECT cid, cname FROM classlist WHERE status = 1';
+    $r = $mysql->query($sql);
+    $classlist = $r->fetch_all(MYSQLI_ASSOC);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -80,66 +86,58 @@
                     <a><cite>添加学生</cite></a>
                 </span>
                 <hr>
-                <form class="layui-form" action="">
+                <form class="layui-form" action="./addstusubmit.php" method="POST">
                     <div class="layui-form-item">
                         <label class="layui-form-label">姓名</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="sname" placeholder="请输入姓名"
-                                autocomplete="off" class="layui-input">
+                            <input type="text" name="sname" placeholder="请输入姓名" autocomplete="off" class="layui-input">
                         </div>
                         <div class="layui-form-mid layui-word-aux">*必填</div>
                     </div>
 
 
                     <div class="layui-form-item">
-                            <label class="layui-form-label">学号</label>
-                            <div class="layui-input-inline">
-                                <input type="text" name="snum" required lay-verify="required" placeholder="请输入姓名"
-                                    autocomplete="off" class="layui-input">
-                            </div>
-                            <div class="layui-form-mid layui-word-aux">*必填</div>
+                        <label class="layui-form-label">学号</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="snum" placeholder="请输入姓名"
+                                autocomplete="off" class="layui-input">
                         </div>
+                        <div class="layui-form-mid layui-word-aux">*必填</div>
+                    </div>
 
-                        <div class="layui-form-item">
-                                <label class="layui-form-label">手机号</label>
-                                <div class="layui-input-inline">
-                                    <input type="text" name="snum" placeholder="请输入手机号"
-                                        autocomplete="off" class="layui-input">
-                                </div>
-                                <div class="layui-form-mid layui-word-aux">*必填</div>
-                            </div>
-
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">手机号</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="tel" placeholder="请输入手机号" autocomplete="off" class="layui-input">
+                        </div>
+                        <div class="layui-form-mid layui-word-aux">*必填</div>
+                    </div>
 
                     <div class="layui-form-item">
                         <label class="layui-form-label">班级</label>
                         <div class="layui-input-inline">
-                            <select name="cid" lay-verify="required">
-                                <option value=""></option>
-                                <option value="0">北京</option>
-                                <option value="1">上海</option>
-                                <option value="2">广州</option>
-                                <option value="3">深圳</option>
-                                <option value="4">杭州</option>
+                            <select name="cid">
+                                <option value="">请选择班级</option>
+                                <?php
+                                    foreach ($classlist as $key => $value) {
+                                        echo '<option value="'.$value['cid'].'">'.$value['cname'].'</option>';
+                                    }
+                                ?>
                             </select>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">单选框</label>
+                        <div class="layui-input-block">
+                            <input type="radio" name="gender" value="1" title="男">
+                            <input type="radio" name="gender" value="2" title="女" checked>
                         </div>
                     </div>
                     
                     <div class="layui-form-item">
-                        <label class="layui-form-label">单选框</label>
                         <div class="layui-input-block">
-                            <input type="radio" name="sex" value="男" title="男">
-                            <input type="radio" name="sex" value="女" title="女" checked>
-                        </div>
-                    </div>
-                    <div class="layui-form-item layui-form-text">
-                        <label class="layui-form-label">文本域</label>
-                        <div class="layui-input-block">
-                            <textarea name="desc" placeholder="请输入内容" class="layui-textarea"></textarea>
-                        </div>
-                    </div>
-                    <div class="layui-form-item">
-                        <div class="layui-input-block">
-                            <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+                            <button class="layui-btn" lay-submit lay-filter="formDemo">添加</button>
                             <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                         </div>
                     </div>
