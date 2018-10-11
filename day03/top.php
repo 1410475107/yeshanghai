@@ -14,11 +14,7 @@
 <body class="layui-layout-body">
     <div class="layui-layout layui-layout-admin">
         <div class="layui-header">
-<<<<<<< HEAD
             <div class="layui-logo">教务管理系统</div>
-=======
-            <div class="layui-logo">layui 后台布局</div>
->>>>>>> 1c11227fdbd94e052ad52629762e6830eae22a7c
             <!-- 头部区域（可配合layui已有的水平导航） -->
             <ul class="layui-nav layui-layout-left">
                 <li class="layui-nav-item"><a href="">控制台</a></li>
@@ -53,19 +49,10 @@
                 <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
                 <ul class="layui-nav layui-nav-tree" lay-filter="test">
                     <li class="layui-nav-item layui-nav-itemed">
-<<<<<<< HEAD
                         <a class="" href="javascript:;">学生管理</a>
                         <dl class="layui-nav-child">
                             <dd><a href="./stulist.php">学生列表</a></dd>
                             <dd><a href="./addstu.php">学生添加</a></dd>
-=======
-                        <a class="" href="javascript:;">所有商品</a>
-                        <dl class="layui-nav-child">
-                            <dd><a href="javascript:;">列表一</a></dd>
-                            <dd><a href="javascript:;">列表二</a></dd>
-                            <dd><a href="javascript:;">列表三</a></dd>
-                            <dd><a href="">超链接</a></dd>
->>>>>>> 1c11227fdbd94e052ad52629762e6830eae22a7c
                         </dl>
                     </li>
                     <li class="layui-nav-item">
