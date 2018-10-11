@@ -115,9 +115,6 @@ function delstu() {
                     }
                 }
             }, function (index) {});
-
-
-
         }
     }
 
