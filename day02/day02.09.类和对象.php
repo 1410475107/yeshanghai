@@ -55,11 +55,9 @@
         }
     }
 
-
     class Student extends Person{
         
     }
-
 
     //产生一个人
     $p1 = new Person('胡文文', 2, 20);

@@ -1,0 +1,11 @@
+.layui-fluid{
+    padding: 0;
+}
+
+.layui-nav{
+    border-radius: 0;
+}
+
+.layui-breadcrumb a{
+    color: rgb(239, 79, 43) !important;
+}
