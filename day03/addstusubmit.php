@@ -12,7 +12,7 @@ $r = $mysql->query($sql);
 
 
 if ($r) {
-    echo 'success';
+    echo json_encode(['r'=>'ok', 'id'=>100]);
 } else {
-    echo 'fail';
+    echo json_encode(['r'=>'fail']);
 }
