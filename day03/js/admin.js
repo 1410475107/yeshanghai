@@ -1,5 +1,6 @@
 window.onload = function () {
     addstu();
+    delstu();
 }
 
 
@@ -7,8 +8,8 @@ window.onload = function () {
 function addstu() {
     //事件源
     let addstu = document.querySelector('.addstu');
-    if(!addstu) return ;
-    
+    if (!addstu) return;
+
     //事件三要素
     addstu.onclick = function () {
         // 要提交的数据
@@ -87,4 +88,37 @@ function addstu() {
 
 
     }
+}
+
+
+//  删除学生信息
+function delstu() {
+    let delstu = document.querySelector('.classlist tbody');
+    if(!delstu) return;
+    delstu.onclick = function (e) {
+        //判断当前点击的是 .delstu
+        if (e.target.classList.contains('delstu')) {
+            layer.confirm('是否确定删除？', {
+                btn: ['确定', '取消']
+            }, function (index, layero) {
+                //获取自定义属性值得方法
+                let sid = e.target.dataset.sid;
+                let xhr = new XMLHttpRequest();
+                xhr.open('GET', './delstu.php?sid=' + sid);
+                xhr.send();
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        let data = JSON.parse(xhr.responseText);
+                        if (data.r1 == 'ok') {
+                            window.location.reload();
+                        }
+                    }
+                }
+            }, function (index) {});
+
+
+
+        }
+    }
+
 }

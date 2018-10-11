@@ -15,7 +15,7 @@ $students = $r->fetch_all(MYSQLI_ASSOC);
       <a><cite>学生列表</cite></a>
     </span>
     <hr>
-    <table class="layui-table">
+    <table class="layui-table  classlist">
       <colgroup>
         <col width="150">
         <col width="200">
@@ -28,6 +28,7 @@ $students = $r->fetch_all(MYSQLI_ASSOC);
           <th>学号</th>
           <th>手机号</th>
           <th>性别</th>
+          <th>操作</th>
         </tr>
       </thead>
       <tbody>
@@ -40,6 +41,8 @@ $students = $r->fetch_all(MYSQLI_ASSOC);
               <th>'.$stu['snum'].'</th>
               <th>'.$stu['tel'].'</th>
               <th>'.$gender[$stu['gender']].'</th>
+              <th><A href="###" class="delstu" data-sid="'.$stu['sid'].'">删除</A></th>
+
             </tr>';
           }
         ?>
