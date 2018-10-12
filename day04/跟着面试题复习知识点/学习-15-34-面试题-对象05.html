@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>面试题和知识点复习</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style></style>
+</head>
+<body>
+    <div class="container">
+        <h3>解决前一个问题，使输出一致</h3>
+        <pre>
+            var name    = 'lili';
+            var obj     = {
+                name: 'liming',
+                prop: {
+                    name: 'ivan',
+                    getname: function() {
+                      return this.name;
+                    }
+                }
+            };
+            console.log(obj.prop.getname());//ivan
+            var test = obj.prop.getname;  
+            console.log(test()); //lili
+
+            //改变this指向，使输出一致
+            //方法一：bind:指定方法执行的主体
+            var test = obj.prop.getname.bind(obj.prop);
+            console.log(test()); //ivan
+            //方法二：指定方法被谁调用
+            console.log(test.call(obj.prop));//ivan
+            //方法三：指定方法被谁调用
+            console.log(test.apply(obj.prop));//ivan
+
+            试题解析：
+            谁调用这个方法，this就指向谁；
+            bind\call\apply可以实现方法的劫持，会改变this指向；
+        </pre>
+    </div>
+    <script>
+        var name    = 'lili';
+        var obj     = {
+            name: 'liming',
+            prop: {
+               name: 'ivan',
+               getname: function() {
+                  return this.name;
+               }
+            }
+        };
+        console.log(obj.prop.getname());//ivan
+        var test = obj.prop.getname;  
+        console.log(test()); //lili
+
+        //改变this指向，使输出一致
+        //方法一：bind:指定方法执行的主体
+        var test = obj.prop.getname.bind(obj.prop);
+        console.log(test()); //ivan
+        //方法二：指定方法被谁调用
+        console.log(test.call(obj.prop));//ivan
+        //方法三：指定方法被谁调用
+        console.log(test.apply(obj.prop));//ivan
+    </script>
+</body>
+</html>

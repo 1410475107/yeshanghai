@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>面试题和知识点复习</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        .answer p{display: none}
+        .answer:hover p{display: block;}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h3>下面程序输出结果，及转换后的数据类型？</h3>
+        <pre>
+            console.log('5'+3);
+            console.log('5'+'3'); 
+            console.log('5'-3); 
+            console.log('5'-'3');
+            console.log('ab'-2);
+            <div class="answer">试题解析：
+            <p>
+            试题解析：
+            +：在运算的时候，如果碰到字符串，会把所有的参与运算的数据类型全部转成字符串；
+            -：数字相减，在运算的时候会尝试把所有参与运算的值转成数字类型；
+            不是纯数字的字符串，在尝试转成数字的时候，会返回NaN；
+            NaN参与运算的时候，结果总是NaN；
+            NaN的数据类型是number；
+            isNaN()：判断一个值是不是数字，不是数字返回true；
+            </p>
+            </div>
+        </pre>
+    </div>
+    <script>
+        // 代码
+        console.log('5'+3);
+        console.log(typeof('5'+3));
+        //8?? number??
+        console.log('5'+'3');
+        console.log(typeof('5'+'3'));
+         //53  string
+        console.log('5'-3);
+        console.log(typeof('5'-3));
+         //2 number
+        console.log('5'-'3');
+        console.log(typeof('5'-'3'));
+         //2  number
+        console.log('ab'-2);
+        console.log(typeof('ab'-2));
+         //NaN number
+        console.log(9-'a'.charCodeAt(0));//a:97
+        console.log('a'.charCodeAt(0));
+        console.log('A'.charCodeAt(0));
+
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>面试题和知识点复习</title>
+   
+    <style>
+        .answer p{display: none}
+        .answer:hover p{display: block;}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h3>分析下面的JavaScript，的输出是多少？</h3>
+        <pre>
+            var a = '' + 3;  
+            var b = 4;
+            console.log(typeof a);
+            console.log(a+b);
+            console.log(a-b);
+             
+            var foo = "11"+2+"1"; 
+            console.log(foo);
+            console.log(typeof foo);
+            <div class="answer">试题解析：
+            <p>
+            试题解析：
+            </p>
+            </div>
+        </pre>
+    </div>
+    <script>
+        // 代码
+        var a = '' + 3;
+        var b = 4;
+        console.log(typeof a); //string
+        console.log(a+b); //34
+        console.log(a-b); //-1
+        var foo = "11"+2+"1"; 
+        console.log(foo);//1121
+        console.log(typeof foo);//string
+    </script>
+</body>
+</html>

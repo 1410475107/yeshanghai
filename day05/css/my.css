@@ -1,0 +1,41 @@
+.layui-fluid{
+    padding: 0;
+}
+
+.layui-nav{
+    border-radius: 0;
+}
+
+.layui-breadcrumb a, .classlist a{
+    color: rgb(239, 79, 43) !important;
+}
+
+.H{
+    color: red !important;
+}
+
+.mydiv{
+
+
+    width: 200px;
+    height: 60px;
+    font-family: 微软雅黑;
+    font-size: 28px;
+    line-height: 60px;
+    text-align: center;
+    border: 2px solid #2dcc4f;
+    margin: 20px;
+    color: blueviolet;
+
+}
+
+.header img{
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.myheader{
+    display: none;
+}

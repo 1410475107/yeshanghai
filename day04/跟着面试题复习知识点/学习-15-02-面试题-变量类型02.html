@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>面试题和知识点复习-02</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        .answer p{display: none}
+        .answer:hover p{display: block;}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h3>下面typeof 的返回类型有哪些？</h3>
+        <pre>
+            console.log(typeof [1, 2]);
+            console.log(typeof 'leipeng');
+            var i = true; 
+            console.log(typeof i); 
+            console.log(typeof 1); 
+            var a; 
+            console.log(typeof a);
+            function a(){;};
+            console.log(typeof a);
+            console.log(typeof 'true');
+            <div class="answer">试题解析：
+            <p>
+            试题解析：
+            数组是特殊的对象；
+            布尔值返回的类型是boolean，布尔类型只有两个值：true、false；
+            数字类型不分整数和浮点型，就是数字类型；
+            变量的提升：只提升声明，不提升赋值，并且后面的声明权限高于前面；
+            解释器执行JS代码的时候，会把所有的声明放到最前面；
+            我们说函数也只一种特殊的对象，但是在获取类型的时候，确实返回的是function；
+            </p>
+            </div>
+        </pre>
+    </div>
+    <script>
+        // 代码
+        console.log(typeof [1, 2]); //object
+        console.log(typeof 'leipeng');//String 
+        var i = true; 
+        console.log(typeof i); //string ?? Object ?? Boolean
+        console.log(typeof 1); //Number
+        var a; 
+        console.log(typeof a); //undefined
+        function a(){;};
+        console.log(typeof a);//object??  function
+        console.log(typeof 'true');
+    </script>
+</body>
+</html>

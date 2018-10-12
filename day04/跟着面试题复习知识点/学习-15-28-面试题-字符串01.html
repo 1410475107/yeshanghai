@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>面试题和知识点复习</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style></style>
+</head>
+<body>
+    <div class="container">
+        <h3>实现indexof 函数</h3>
+        <pre>
+            function indexof(s,c){
+                for(var i=0;i < s.length;i++){
+                    if(s[i]==c){
+                        return i;   
+                    }
+                }
+                return -1;
+            }
+            console.log(indexof(str,'a'));
+            试题解析：
+            字符串可以看成数组，下标从0开始，后面依次加一；
+            函数在遇到return返回值后，代码不会再往下执行；
+            如果循环整个字符串后，没有要查找的字符，最后返回-1;
+        </pre>
+    </div>
+    <script>
+        function indexof(s,c){
+            for(var i=0;i<s.length;i++){
+                if(s[i]==c){
+                    return i;   
+                }
+            }
+            return -1;
+        }
+        console.log(indexof(str,'a'));
+    </script>
+</body>
+</html>

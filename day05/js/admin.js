@@ -5,7 +5,38 @@ window.onload = function () {
 
     //抽选学生
     rand();
+
+    //上传图片
+    uploadimg();
 }
+function uploadimg() {
+    let myheader = document.querySelector('.myheader'); 
+    if(!myheader) return ;
+    let headerimg = document.querySelector('.header img'); 
+    //事件处理
+    myheader.onchange = function(){
+        console.log(this.files[0]);
+        //把文件上传到服务器 AJAX 然后服务器返回一个图片地址
+        let xhr = new XMLHttpRequest();
+        xhr.open('POST', './uploads.php');
+        //创建一个表单数据对象
+        let formdata = new FormData();  //类似于写了一个表单  <form></form>
+        formdata.append('myheader', this.files[0]);//<input name="myheader" type="file" files="this.files[0]">
+        formdata.append('username', '沈斌');
+        xhr.send(formdata);
+
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                let data = JSON.parse(xhr.responseText);
+                console.log(data);
+                headerimg.src = data.path;
+            }
+        }
+
+
+    }
+}
+
 function rand(params) {
     let start = document.querySelector('.rand'); 
     let mydiv = document.querySelector('.mydiv'); 
@@ -161,8 +192,9 @@ function addstu() {
 
         //班级和性别
         data += '&cid=' + document.querySelector('select[name="cid"]').value;
+        data += '&pid=' + document.querySelector('select[name="pid"]').value;
         data += '&gender=' + document.querySelector('input[name="gender"]:checked').value;
-
+        console.log(12);
         //ajax操作：把数据提交到服务器
         //第一步：创建一个XHR对象
         let xhr = new XMLHttpRequest();

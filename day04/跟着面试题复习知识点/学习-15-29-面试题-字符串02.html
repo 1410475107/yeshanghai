@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>面试题和知识点复习</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style></style>
+</head>
+<body>
+    <div class="container">
+        <h3>实现一函数，判断一个字符串是不是回文字符串（从左右读右左读是一样的。比如"level"）</h3>
+        <pre>
+            var str = '上海自来水来自海上';
+            function fn (str) {
+                //把字符串反转，然后对比
+                str = str.toLowerCase();
+                return str == str.split('').reverse().join('');
+            }
+            console.log(fn(str));
+            实体解析：
+            split()可以使用一个空字符（不是空格）把一个字符串转换成数组；
+            每个字符作为数组的一个元素；
+            数组支持反转：reverse();
+            翻转后使用join('')把数组连接成字符串，和原始字符串对比；
+        </pre>
+    </div>
+    <script>
+        var str = '上海自来水来自海上';
+        function fn (str) {
+            //把字符串反转，然后对比
+            str = str.toLowerCase();
+            console.log(str.split('').reverse().join(''));
+            return str == str.split('').reverse().join('');
+        }
+        console.log(fn(str));
+    </script>
+</body>
+</html>
