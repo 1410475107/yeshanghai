@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>面试题和知识点复习-03</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        .answer p{display: none}
+        .answer:hover p{display: block;}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h3>输出是？</h3>
+        <pre>
+            var bool = !!2; 
+            console.log(bool);
+            var bool = !![]; 
+            console.log(bool);
+            var bool = !!{}; 
+            console.log(bool);
+            <div class="answer">试题解析：
+            <p>
+            试题解析：
+            !!：就是强制把一个变量的数据类型转成布尔值；
+            强制转成布尔值有6个值就false：
+                0、-0、''、undefined、false、NaN；
+            空数组、空对象转成布尔值时是true；
+</p>
+            </div>
+            
+
+        </pre>
+    </div>
+    <script>
+        // 代码
+        var bool = !!2; 
+        console.log(bool);
+        var bool = !![]; 
+        console.log(bool);
+        var bool = !!{}; 
+        console.log(bool);
+    </script>
+</body>
+</html>

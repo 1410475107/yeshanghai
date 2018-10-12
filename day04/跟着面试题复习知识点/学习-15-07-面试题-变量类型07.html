@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>面试题和知识点复习</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        .answer p{display: none}
+        .answer:hover p{display: block;}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h3>下面程序的输出是？</h3>
+        <pre>
+            var a   = new Object();
+            a.value = 1;
+            b       = a;
+            b.value = 2;
+            console.log(a.value);
+            <div class="answer">试题解析：
+            <p>
+            试题解析：
+            对象和数字在复制值的时候，直接复制的是引用，他们会指向同一个地址；
+            对同一个地址空间里面的数据修改时，对应的变量都会修改；
+            </p>
+            </div>
+        </pre>
+    </div>
+    <script>
+        // 代码
+        var a   = new Object();
+        a.value = 1;
+        b       = a;
+        b.value = 2;
+        console.log(a.value);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>面试题和知识点复习</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        .answer p{display: none}
+        .answer:hover p{display: block;}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h3>输出结果是？</h3>
+        <pre>
+            for(i=0, j=0; i<10, j<6; i++, j++){
+                k = i + j;
+            }
+            console.log(k);
+            <div class="answer">试题解析：
+            <p>
+            试题解析：
+            for循环小括号里面是三个语句；
+            语句一：初始化；
+            语句二：判断条件，多个判断条件可以用逗号分号；
+            语句三：每次循环结束后执行一次，一般用作修改判断条件的值；
+            </p>
+            </div>
+        </pre>
+    </div>
+    <script>
+        // 代码
+        for(i=0, j=0; i<10, j<6; i++, j++){
+            k = i + j;
+        }
+        console.log(k);
+    </script>
+</body>
+</html>

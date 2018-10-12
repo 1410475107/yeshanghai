@@ -31,7 +31,6 @@ function rand(params) {
             }
         }
     }
-
 }
 //添加学生信息  js
 function updatestu() {
