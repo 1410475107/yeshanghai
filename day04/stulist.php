@@ -42,7 +42,7 @@ $students = $r->fetch_all(MYSQLI_ASSOC);
               <th>'.$stu['tel'].'</th>
               <th>'.$gender[$stu['gender']].'</th>
               <th><A href="###" class="delstu" data-sid="'.$stu['sid'].'">删除</A> | 
-                <a href="">修改</a>
+              <a href="./updatestu.php?sid='.$stu['sid'].'">修改</a>
               </th>
 
             </tr>';
