@@ -1,4 +1,7 @@
-<?php require('./common/mysql.php'); ?>
+<?php
+// 开启session：如果配置环境里面没有auto_start
+session_start();
+require('./common/mysql.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,7 +36,7 @@
                 <li class="layui-nav-item">
                     <a href="javascript:;">
                         <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
-                        贤心
+                        <?=$_SESSION['name']?>
                     </a>
                     <dl class="layui-nav-child">
                         <dd><a href="">基本资料</a></dd>
