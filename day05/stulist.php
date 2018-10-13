@@ -17,14 +17,15 @@ $students = $r->fetch_all(MYSQLI_ASSOC);
     <hr>
     <table class="layui-table  classlist">
       <colgroup>
-        <col width="150">
-        <col width="200">
+        <col width="50">
+        <col width="100">
         <col>
       </colgroup>
       <thead>
         <tr>
           <th>ID</th>
           <th>姓名</th>
+          <th>头像</th>
           <th>学号</th>
           <th>手机号</th>
           <th>性别</th>
@@ -38,6 +39,7 @@ $students = $r->fetch_all(MYSQLI_ASSOC);
             echo '<tr>
               <th>'.$stu['sid'].'</th>
               <th>'.$stu['sname'].'</th>
+              <th class="header"><img src="'.($stu['head'] ? $stu['head'] : './img/header.jpg').'"></th>
               <th>'.$stu['snum'].'</th>
               <th>'.$stu['tel'].'</th>
               <th>'.$gender[$stu['gender']].'</th>

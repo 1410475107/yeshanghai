@@ -30,10 +30,10 @@ function uploadimg() {
                 let data = JSON.parse(xhr.responseText);
                 console.log(data);
                 headerimg.src = data.path;
+                // 修改图片地址的值
+                document.querySelector('input[name="head"]').value = data.path;
             }
         }
-
-
     }
 }
 
@@ -113,6 +113,18 @@ function updatestu() {
         //班级和性别
         data += '&cid=' + document.querySelector('select[name="cid"]').value;
         data += '&gender=' + document.querySelector('input[name="gender"]:checked').value;
+
+        //获取爱好
+        let hobby = document.querySelectorAll('input[name="hobby[]"]:checked');
+        let str = [];
+        for (const h of hobby) {
+            str.push(h.value); 
+        }
+        data += '&hobby=' + str.join(',');
+        //头像地址
+        data += '&head=' + document.querySelector('input[name="head"]').value;
+        //个人简介
+        data += '&info=' + document.querySelector('#info').value;
 
         //ajax操作：把数据提交到服务器
         //第一步：创建一个XHR对象

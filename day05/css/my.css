@@ -30,12 +30,16 @@
 }
 
 .header img{
-    width: 120px;
-    height: 120px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     cursor: pointer;
 }
 
-.myheader{
+.myheader, .hide{
     display: none;
+}
+
+.layui-form-select dl{
+    z-index: 99999;
 }
