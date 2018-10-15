@@ -48,3 +48,9 @@
     width: 400px;
     margin:  30px auto;
 }
+
+.my-label{
+    padding: 9px 0;
+    width: auto; 
+    font-size: 16px;
+}

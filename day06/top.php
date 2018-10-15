@@ -51,6 +51,13 @@ require('./common/admin.php'); ?>
                 <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
                 <ul class="layui-nav layui-nav-tree" lay-filter="test">
                     <li class="layui-nav-item layui-nav-itemed">
+                        <a class="" href="javascript:;">班级管理</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="./classlist.php">班级列表</a></dd>
+                            <dd><a href="./addclass.php">班级添加</a></dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item layui-nav-itemed">
                         <a class="" href="javascript:;">学生管理</a>
                         <dl class="layui-nav-child">
                             <dd><a href="./stulist.php">学生列表</a></dd>

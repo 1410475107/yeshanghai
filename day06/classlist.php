@@ -7,12 +7,12 @@ $where = ' WHERE status = 1';
 //链接地址要传的值
 $urlext = '';
 //如果用户输入关键词 去除空格   trim
-$sname = '';
-if (isset($_GET['sname']) && trim($_GET['sname'])) {
-    $sname = trim($_GET['sname']);
-    $where .= ' AND sname LIKE "%' . $sname . '%"';
+$cname = '';
+if (isset($_GET['cname']) && trim($_GET['cname'])) {
+    $cname = trim($_GET['cname']);
+    $where .= ' AND cname LIKE "%' . $cname . '%"';
     //地址传值  urlencode：对地址进行编码
-    $urlext .= '&sname=' . urlencode($sname);
+    $urlext .= '&cname=' . urlencode($cname);
 }
 
 //根据性别查询
@@ -24,7 +24,7 @@ if (isset($_GET['gender']) && (int)$_GET['gender']) {
 }
 
 //计算总页数 $totalpage = ($totalnums / $pagenum)
-$sql = 'SELECT COUNT(sid) AS totalnums FROM students' . $where;
+$sql = 'SELECT COUNT(cid) AS totalnums FROM classlist' . $where;
 $r = $mysql->query($sql);
 $row = $r->fetch_array(MYSQLI_ASSOC);
 $totalpage = ceil($row['totalnums'] / $pagenum);
@@ -32,10 +32,10 @@ $totalpage = ceil($row['totalnums'] / $pagenum);
 //当前是第几页
 $page = (isset($_GET['page']) && (int)$_GET['page'] > 0 && (int)$_GET['page'] <= $totalpage) ? $_GET['page'] : 1;
 
-$sql = 'SELECT * FROM students' . $where . ' LIMIT ' . ($page - 1) * $pagenum . ', ' . $pagenum;
+$sql = 'SELECT * FROM classlist' . $where . ' LIMIT ' . ($page - 1) * $pagenum . ', ' . $pagenum;
 
 $r = $mysql->query($sql);
-$students = $r->fetch_all(MYSQLI_ASSOC);
+$classlist = $r->fetch_all(MYSQLI_ASSOC);
 
 //上一页  不能小于 1
 $prev = $page - 1 < 1 ? 1 : ($page - 1);
@@ -53,11 +53,7 @@ if ($start < 1) {
     $start = 1;
     $end = $start + $showpage - 1;
 }
-/*
-    $end - $start = $showpage – 1
-    $start = $page – ($showpage-1)/2
-    $end = $page + ($showpage-1)/2
- */
+
 // 结束页数不能大于总页数  $end =  $start  + $showpage - 1
 if ($end > $totalpage) {
     $end = $totalpage;
@@ -76,35 +72,26 @@ if ($end > $totalpage) {
     <span class="layui-breadcrumb">
       <a href="">首页</a>
       <a href="">教务系统</a>
-      <a href="">学生管理</a>
-      <a><cite>学生列表</cite></a>
+      <a href="">班级管理</a>
+      <a><cite>班级列表</cite></a>
     </span>
     <hr>
-    <form action="./stulist.php" class="layui-form" method="get">
+    <form action="./classlist.php" class="layui-form" method="get">
     
     <div class="layui-form-item">
         <div class="layui-inline">
-            <label class="layui-form-label my-label"> 姓名：</label>
+            <label class="layui-form-label my-label"> 班级名称：</label>
             <div class="layui-input-inline" style="width: 100px;">
-                <input type="text" name="sname"  class="layui-input" value="<?= $sname ?>">
+                <input type="text" name="cname"  class="layui-input" value="<?= $cname ?>">
             </div>
         </div>
-        <div class="layui-inline">
-            <label class="layui-form-label my-label"> 性别：</label>
-            <div class="layui-input-inline" style="width: 220px;">
-            <input type="radio" name="gender" value="0" title="全部" <?= $gender == 0 ? ' checked' : '' ?>>
-            <input type="radio" name="gender" value="1" title="男" <?= $gender == 1 ? ' checked' : '' ?>>
-            <input type="radio" name="gender" value="2" title="女" <?= $gender == 2 ? ' checked' : '' ?>>
-            </div>
-        </div>
-
          <button class="layui-btn">查询</button>
 
         </div>
     </form>
   
   <div class="layui-box layui-laypage layui-laypage-default">
-        <a href="./stulist.php?page=<?= $prev . $urlext ?>" class="layui-laypage-prev" data-page="0">上一页</a>
+        <a href="./classlist.php?page=<?= $prev . $urlext ?>" class="layui-laypage-prev" data-page="0">上一页</a>
         <?php
             //显示中间页码
         for ($p = $start; $p <= $end; $p++) {
@@ -114,43 +101,32 @@ if ($end > $totalpage) {
                             <em>' . $page . '</em>
                         </span>';
             } else {
-                echo '<a href="./stulist.php?page=' . $p . $urlext . '">' . $p . '</a>';
+                echo '<a href="./classlist.php?page=' . $p . $urlext . '">' . $p . '</a>';
             }
         }
         ?>
-        <a href="./stulist.php?page=<?= $next . $urlext ?>" class="layui-laypage-next">下一页</a>
+        <a href="./classlist.php?page=<?= $next . $urlext ?>" class="layui-laypage-next">下一页</a>
     </div>
 
     <table class="layui-table  classlist">
       <colgroup>
-        <col width="50">
-        <col width="100">
         <col>
       </colgroup>
       <thead>
         <tr>
           <th>ID</th>
-          <th>姓名</th>
-          <th>头像</th>
-          <th>学号</th>
-          <th>手机号</th>
-          <th>性别</th>
+          <th>班级名称</th>
           <th>操作</th>
         </tr>
       </thead>
       <tbody>
         <?php
-        $gender = [1 => '男', 2 => '女'];
-        foreach ($students as $key => $stu) {
+        foreach ($classlist as $key => $cll) {
             echo '<tr>
-              <th>' . $stu['sid'] . '</th>
-              <th>' . str_replace($sname, '<span class="H">' . $sname . '</span>', $stu['sname']) . '</th>
-              <th class="header"><img src="' . ($stu['head'] ? $stu['head'] : './img/header.jpg') . '"></th>
-              <th>' . $stu['snum'] . '</th>
-              <th>' . $stu['tel'] . '</th>
-              <th>' . $gender[$stu['gender']] . '</th>
-              <th><A href="###" class="delstu" data-sid="' . $stu['sid'] . '">删除</A> | 
-              <a href="./updatestu.php?sid=' . $stu['sid'] . '">修改</a>
+              <th>' . $cll['cid'] . '</th>
+              <th>' . str_replace($cname, '<span class="H">' . $cname . '</span>', $cll['cname']) . '</th>
+              <th><A href="###" class="delcll" data-cid="' . $cll['cid'] . '">删除</A> | 
+              <a href="./updatecll.php?cid=' . $cll['cid'] . '">修改</a>
               </th>
 
             </tr>';
@@ -167,10 +143,5 @@ if ($end > $totalpage) {
 
 <script>
 var laypage = layui.laypage;
-  
-  //执行一个laypage实例
-  laypage.render({
-    elem: 'test1' //注意，这里的 test1 是 ID，不用加 # 号
-    ,count: 50 //数据总数，从服务端得到
-  });
+
 </script>
