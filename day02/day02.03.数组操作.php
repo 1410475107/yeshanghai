@@ -9,6 +9,10 @@
 <body>
     <?php
     $arr = array(1, 2, 3, 4);
+    foreach ($arr as $v => $k) {
+        echo $k;
+    }
+    
     // 循环数组
     foreach ($arr as $key => $value) {
         echo $key . ':' . $value;

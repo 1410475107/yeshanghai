@@ -37,7 +37,7 @@ function uploadimg() {
     }
 }
 
-function rand(params) {
+function rand() {
     let start = document.querySelector('.rand'); 
     let mydiv = document.querySelector('.mydiv'); 
     if(!start) return ;

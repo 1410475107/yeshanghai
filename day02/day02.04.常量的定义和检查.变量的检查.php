@@ -25,6 +25,7 @@
         }
         echo '<hr>';
         //检查变量是否声明过
+        // unset:销毁变量
         if(isset($c)){
             echo $c;
         }else{

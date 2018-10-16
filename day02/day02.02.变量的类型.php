@@ -30,6 +30,8 @@
         $student = ['name'=>'汤平', 'age'=>20, 'height'=>178];
         echo gettype($student);
 
+        // boolean   null
+
 
 
 
